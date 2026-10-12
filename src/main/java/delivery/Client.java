@@ -13,8 +13,13 @@ public class Client {
         return name;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
     @Override
     public String toString() {
         return "Клиент: " + name + " (" + phone + ")";
     }
+
 }

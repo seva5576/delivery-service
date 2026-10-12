@@ -30,6 +30,10 @@ public class Courier {
         return isBusy;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         String status = isBusy ? "занят" : "свободен";
