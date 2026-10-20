@@ -14,7 +14,7 @@ public class PickupDelivery implements DeliveryMethod {
 
     @Override
     public boolean requiresCourier() {
-        return false; // ⚠️ КУРЬЕР НЕ НУЖЕН! Это главное отличие.
+        return false; // курьер не нужен
     }
 
     @Override

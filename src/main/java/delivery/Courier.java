@@ -3,36 +3,33 @@ package delivery;
 public class Courier {
     private String name;
     private String phone;
-    private boolean isBusy; // true = занят, false = свободен
+    private boolean isBusy;
 
     public Courier(String name, String phone) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Имя курьера не может быть пустым.");
+        }
         this.name = name;
         this.phone = phone;
-        this.isBusy = false; // по умолчанию курьер свободен
+        this.isBusy = false; // По умолчанию новый курьер свободен
     }
 
-    // Метод, чтобы назначить курьера на заказ
+    // Метод для назначения курьера на заказ
     public void assign() {
         if (isBusy) {
-            System.out.println("⚠️ Ошибка: Курьер " + name + " уже занят!");
-        } else {
-            isBusy = true;
-            System.out.println("✅ Курьер " + name + " назначен на заказ.");
+            throw new IllegalStateException("Курьер " + name + " уже занят.");
         }
+        isBusy = true;
     }
 
-    // Метод, чтобы освободить курьера после доставки
+    // Метод для освобождения курьера после доставки заказа
     public void release() {
         isBusy = false;
     }
 
-    public boolean isBusy() {
-        return isBusy;
-    }
-
-    public String getName() {
-        return name;
-    }
+    public boolean isBusy() { return isBusy; }
+    public String getName() { return name; }
+    public String getPhone() { return phone; }
 
     @Override
     public String toString() {

@@ -1,13 +1,15 @@
 package delivery;
 
-// Это наш "бланк". В нём нет кода, только требования.
 public interface DeliveryMethod {
+    // Метод возвращает стоимость доставки
+    double getCost();
 
-    double getCost();           // Сколько стоит доставка?
+    // Метод возвращает ориентировочное время доставки
+    String getEstimatedTime();
 
-    String getEstimatedTime();  // Сколько времени займёт?
+    // Метод возвращает true, если для этого способа нужен курьер, и false, если нет
+    boolean requiresCourier();
 
-    boolean requiresCourier();  // Нужен ли курьер? (true/false)
-
-    String getName();           // Как называется способ?
+    // Метод возвращает название способа доставки
+    String getName();
 }

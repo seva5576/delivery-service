@@ -6,24 +6,21 @@ public class OrderItem {
     private double price;
 
     public OrderItem(String productName, int quantity, double price) {
-        this.productName = productName;
-
-        // Простая проверка через if
+        if (productName == null || productName.isBlank()) {
+            throw new IllegalArgumentException("Название товара не может быть пустым.");
+        }
         if (quantity <= 0) {
-            System.out.println("⚠️ Ошибка: количество должно быть больше 0! Установлено 1.");
-            this.quantity = 1;
-        } else {
-            this.quantity = quantity;
+            throw new IllegalArgumentException("Количество должно быть больше 0.");
         }
-
-        if (price < 0) {
-            System.out.println("⚠️ Ошибка: цена не может быть отрицательной! Установлено 0.");
-            this.price = 0;
-        } else {
-            this.price = price;
+        if (price <= 0) {
+            throw new IllegalArgumentException("Цена должна быть больше 0.");
         }
+        this.productName = productName;
+        this.quantity = quantity;
+        this.price = price;
     }
 
+    // Метод для подсчёта общей стоимости позиции
     public double getTotal() {
         return quantity * price;
     }
