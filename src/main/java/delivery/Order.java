@@ -77,6 +77,12 @@ public class Order {
 
     // 4. Смена статуса заказа
     public void changeStatus(String newStatus) {
+        if (items.isEmpty() && !newStatus.equals("Отменен")) {
+            throw new IllegalStateException("В заказе нет ни одной позиции.");
+        }
+        if (deliveryMethod == null && !newStatus.equals("Отменен")) {
+            throw new IllegalStateException("Сначала выберите способ доставки.");
+        }
         // Проверка: для статусов "В пути" и "Доставлен" нужен курьер
         if ((newStatus.equals("В пути") || newStatus.equals("Доставлен"))) {
             if (deliveryMethod != null && deliveryMethod.requiresCourier() && courier == null) {
